@@ -1,0 +1,50 @@
+name: CI/CD Pipeline for Angular with ECS
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test -- --watch=false
+
+      - name: Build Docker image
+        run: docker build -t your-ecr-repo:latest .
+
+      - name: Log in to Amazon ECR
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <992382655523.dkr.ecr.eu-north-1.amazonaws.com/demotesting>
+
+      - name: Push Docker image to ECR
+        run: |
+          docker tag your-ecr-repo:latest <992382655523.dkr.ecr.eu-north-1.amazonaws.com/demotesting>:latest
+          docker push <992382655523.dkr.ecr.eu-north-1.amazonaws.com/demotesting>:latest
+
+      - name: Deploy to ECS
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws ecs update-service --cluster <demoTestingCluster> --service <FirstDemoSite> --force-new-deployment --region us-east-1
