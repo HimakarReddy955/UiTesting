@@ -14,13 +14,13 @@ RUN npm install
 COPY . .
 
 # Build the Angular application
-RUN npm run build -- --prod
+RUN npm run build --prod
 
 # Use the official Nginx image to serve the Angular application
 FROM nginx:alpine
 
 # Copy the build output to the Nginx HTML directory
-COPY --from=build /app/dist/ui-testing /usr/share/nginx/html
+COPY --from=build /usr/src/app/dist/ui-testing /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
