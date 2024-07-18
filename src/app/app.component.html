@@ -7,4 +7,39 @@
 </button>
 <button class="subscribe" *ngIf="isSubscribed" disabled>Subscribed</button>
 
+<div class="body">
+  <div class="sidebar">
+    <h2>Dashboard</h2>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Reports</a></li>
+      <li><a href="#">Settings</a></li>
+    </ul>
+  </div>
+  <div class="main-content">
+    <div class="header">
+      <h1>Welcome to the Dashboard</h1>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h3>Card 1</h3>
+        <p>Some text here...</p>
+      </div>
+      <div class="card">
+        <h3>Card 2</h3>
+        <p>Some text here...</p>
+      </div>
+      <div class="card">
+        <h3>Card 3</h3>
+        <p>Some text here...</p>
+      </div>
+      <div class="card">
+        <h3>Card 4</h3>
+        <p>Some text here...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
