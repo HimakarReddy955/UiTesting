@@ -39,4 +39,4 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 sync ./dist/UITESTING s3://demobucket955 --delete
+          aws s3 sync ./dist/ui-testing s3://demobucket955 --delete
