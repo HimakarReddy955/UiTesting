@@ -39,7 +39,7 @@ jobs:
 
       - name: Push Docker image to ECR
         run: |
-          docker tag your-ecr-repo:latest 992382655523.dkr.ecr.eu-north-1.amazonaws.com/demotesting:latest
+          docker tag demotesting:latest 992382655523.dkr.ecr.eu-north-1.amazonaws.com/demotesting:latest
           docker push 992382655523.dkr.ecr.eu-north-1.amazonaws.com/demotesting:latest
 
       - name: Deploy to ECS
