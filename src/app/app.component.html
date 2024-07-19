@@ -1,20 +1,19 @@
-<!-- <button class="subscribe" (click)="subscribe()" [disabled]="isSubscribed">
-  {{ btnText }}
-</button> -->
-
-<button class="subscribe" (click)="subscribe()" *ngIf="!isSubscribed">
-  Subscribe
-</button>
-<button class="subscribe" *ngIf="isSubscribed" disabled>Subscribed</button>
-
 <div class="body">
   <div class="sidebar">
     <h2>Dashboard</h2>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Reports</a></li>
-      <li><a href="#">Settings</a></li>
+      <li>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-chart-line"></i> Analytics</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-file-alt"></i> Reports</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+      </li>
     </ul>
   </div>
   <div class="main-content">
