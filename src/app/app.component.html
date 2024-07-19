@@ -1,3 +1,12 @@
+<!-- <button class="subscribe" (click)="subscribe()" [disabled]="isSubscribed">
+  {{ btnText }}
+</button> -->
+
+<button class="subscribe" (click)="subscribe()" *ngIf="!isSubscribed">
+  Subscribe
+</button>
+<button class="subscribe" *ngIf="isSubscribed" disabled>Subscribed</button>
+
 <div class="body">
   <div class="sidebar">
     <h2>Dashboard</h2>
